@@ -1,0 +1,11 @@
+# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
+# For additional information regarding the format and rules of the browserslist config file,
+# see https://github.com/browserslist/browserslist#queries.
+# For IE 9-11 support, remove 'not' before IE 9 in the line below.
+# IE 9-11 support is currently broken and not being worked on due to the non-existence of IE 11 in the wild.
+# last 2 Chrome versions
+# last 2 Firefox versions
+# last 2 Safari versions
+# last 2 iOS Safari versions
+# last 1 Android versions
+# last 1 Android Chrome versions

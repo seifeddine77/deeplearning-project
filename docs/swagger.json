@@ -1,0 +1,441 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Deep Learning CNN+LSTM API",
+    "description": "API REST pour le projet de Deep Learning avec CNN+LSTM",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Support",
+      "email": "support@deeplearning.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Serveur de développement"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Model",
+      "description": "Gestion des modèles"
+    },
+    {
+      "name": "Data",
+      "description": "Gestion des données"
+    },
+    {
+      "name": "Training",
+      "description": "Entraînement et évaluation"
+    }
+  ],
+  "paths": {
+    "/api/model/create": {
+      "post": {
+        "tags": ["Model"],
+        "summary": "Créer un nouveau modèle CNN+LSTM",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "inputShape": {
+                    "type": "array",
+                    "items": {"type": "integer"},
+                    "example": [64, 64, 1],
+                    "description": "Forme de l'entrée [hauteur, largeur, canaux]"
+                  },
+                  "numClasses": {
+                    "type": "integer",
+                    "example": 10,
+                    "description": "Nombre de classes de sortie"
+                  }
+                },
+                "required": ["inputShape", "numClasses"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modèle créé avec succès",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {"type": "boolean"},
+                    "message": {"type": "string"},
+                    "modelSummary": {"type": "string"}
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur"
+          }
+        }
+      }
+    },
+    "/api/model/summary": {
+      "get": {
+        "tags": ["Model"],
+        "summary": "Obtenir le résumé du modèle",
+        "responses": {
+          "200": {
+            "description": "Résumé du modèle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "layers": {"type": "array"},
+                    "totalParams": {"type": "integer"},
+                    "trainableParams": {"type": "integer"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/model/save": {
+      "post": {
+        "tags": ["Model"],
+        "summary": "Sauvegarder le modèle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelName": {
+                    "type": "string",
+                    "example": "mon-modele-v1"
+                  }
+                },
+                "required": ["modelName"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modèle sauvegardé"
+          }
+        }
+      }
+    },
+    "/api/model/load": {
+      "post": {
+        "tags": ["Model"],
+        "summary": "Charger un modèle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelName": {
+                    "type": "string",
+                    "example": "mon-modele-v1"
+                  }
+                },
+                "required": ["modelName"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modèle chargé"
+          }
+        }
+      }
+    },
+    "/api/data/upload": {
+      "post": {
+        "tags": ["Data"],
+        "summary": "Télécharger un dataset",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Fichier CSV ou image"
+                  }
+                },
+                "required": ["file"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dataset uploadé",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {"type": "boolean"},
+                    "stats": {
+                      "type": "object",
+                      "properties": {
+                        "totalSamples": {"type": "integer"},
+                        "features": {"type": "integer"},
+                        "classes": {"type": "integer"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/data/preprocess": {
+      "post": {
+        "tags": ["Data"],
+        "summary": "Prétraiter les données",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "normalization": {
+                    "type": "string",
+                    "enum": ["minmax", "zscore"],
+                    "example": "minmax"
+                  }
+                },
+                "required": ["normalization"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Données prétraitées"
+          }
+        }
+      }
+    },
+    "/api/data/augment": {
+      "post": {
+        "tags": ["Data"],
+        "summary": "Augmenter les données",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "augmentationType": {
+                    "type": "string",
+                    "enum": ["crop", "rotation", "flip"],
+                    "example": "crop"
+                  },
+                  "params": {
+                    "type": "object",
+                    "example": {"cropSize": 56}
+                  }
+                },
+                "required": ["augmentationType"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Données augmentées"
+          }
+        }
+      }
+    },
+    "/api/data/split": {
+      "post": {
+        "tags": ["Data"],
+        "summary": "Diviser les données",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "trainRatio": {"type": "number", "example": 0.7},
+                  "testRatio": {"type": "number", "example": 0.2},
+                  "valRatio": {"type": "number", "example": 0.1}
+                },
+                "required": ["trainRatio", "testRatio", "valRatio"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Données divisées"
+          }
+        }
+      }
+    },
+    "/api/data/stats": {
+      "get": {
+        "tags": ["Data"],
+        "summary": "Obtenir les statistiques des données",
+        "responses": {
+          "200": {
+            "description": "Statistiques",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalSamples": {"type": "integer"},
+                    "trainSize": {"type": "integer"},
+                    "testSize": {"type": "integer"},
+                    "valSize": {"type": "integer"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/training/start": {
+      "post": {
+        "tags": ["Training"],
+        "summary": "Démarrer l'entraînement",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "epochs": {"type": "integer", "example": 10},
+                  "batchSize": {"type": "integer", "example": 32},
+                  "learningRate": {"type": "number", "example": 0.001},
+                  "validationSplit": {"type": "number", "example": 0.2}
+                },
+                "required": ["epochs", "batchSize", "learningRate"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entraînement démarré"
+          }
+        }
+      }
+    },
+    "/api/training/history": {
+      "get": {
+        "tags": ["Training"],
+        "summary": "Obtenir l'historique d'entraînement",
+        "responses": {
+          "200": {
+            "description": "Historique"
+          }
+        }
+      }
+    },
+    "/api/training/evaluate": {
+      "post": {
+        "tags": ["Training"],
+        "summary": "Évaluer le modèle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataset": {
+                    "type": "string",
+                    "enum": ["test", "validation"],
+                    "example": "test"
+                  }
+                },
+                "required": ["dataset"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Résultats d'évaluation"
+          }
+        }
+      }
+    },
+    "/api/training/predict": {
+      "post": {
+        "tags": ["Training"],
+        "summary": "Faire une prédiction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "inputData": {
+                    "type": "array",
+                    "description": "Données d'entrée"
+                  }
+                },
+                "required": ["inputData"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Prédiction"
+          }
+        }
+      }
+    },
+    "/api/training/metrics": {
+      "get": {
+        "tags": ["Training"],
+        "summary": "Obtenir les métriques",
+        "responses": {
+          "200": {
+            "description": "Métriques"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {"type": "string"},
+          "message": {"type": "string"}
+        }
+      }
+    }
+  }
+}

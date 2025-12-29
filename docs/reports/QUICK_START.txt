@@ -1,0 +1,213 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║         🧠 Deep Learning CNN+LSTM Project - QUICK START GUIDE 🚀           ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📍 LOCATION: C:\Users\saife\CascadeProjects\deeplearning-project
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 DÉMARRAGE RAPIDE (3 ÉTAPES)
+
+1️⃣  Installer les dépendances:
+    npm install
+
+2️⃣  Démarrer le serveur:
+    npm start
+
+3️⃣  Accéder à l'application:
+    http://localhost:3000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION
+
+✓ README.md              - Documentation générale du projet
+✓ SETUP.md              - Guide d'installation détaillé
+✓ DEVELOPMENT.md        - Guide de développement
+✓ API_EXAMPLES.md       - Exemples d'utilisation de l'API
+✓ PROJECT_SUMMARY.md    - Résumé complet du projet
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 STRUCTURE DU PROJET
+
+Backend (Node.js + Express):
+  server/
+  ├── index.js                    # Serveur principal
+  ├── routes/                     # API endpoints
+  │   ├── model.js               # Gestion modèles
+  │   ├── data.js                # Gestion données
+  │   └── training.js            # Entraînement
+  └── services/                  # Logique métier
+      ├── modelService.js        # Service modèle CNN+LSTM
+      ├── dataService.js         # Service données
+      └── trainingService.js     # Service entraînement
+
+Frontend (Angular 17):
+  src/
+  ├── app/
+  │   ├── components/            # Composants UI
+  │   │   ├── navbar/           # Navigation
+  │   │   ├── dashboard/        # Tableau de bord
+  │   │   ├── data/             # Gestion données
+  │   │   ├── model/            # Config modèle
+  │   │   └── training/         # Entraînement
+  │   ├── services/
+  │   │   └── api.service.ts    # Service HTTP
+  │   ├── app.component.ts      # Composant racine
+  │   └── app.routes.ts         # Routes
+  ├── main.ts                   # Point d'entrée
+  ├── index.html                # HTML principal
+  └── styles.scss               # Styles globaux
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 FONCTIONNALITÉS PRINCIPALES
+
+✅ Dashboard
+   - Vue d'ensemble du statut
+   - Progression d'entraînement
+   - Métriques récentes
+
+✅ Data Management
+   - Upload de datasets
+   - Normalisation (Min-Max, Z-Score)
+   - Augmentation (Crop, Rotation, Flip)
+   - Division train/test/validation
+
+✅ Model Configuration
+   - Création CNN+LSTM
+   - Visualisation architecture
+   - Sauvegarde/Chargement
+
+✅ Training & Evaluation
+   - Configuration entraînement
+   - Historique d'entraînement
+   - Évaluation modèle
+   - Prédictions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔌 API ENDPOINTS
+
+Model Management:
+  POST   /api/model/create       - Créer modèle
+  GET    /api/model/summary      - Résumé modèle
+  POST   /api/model/save         - Sauvegarder
+  POST   /api/model/load         - Charger
+
+Data Processing:
+  POST   /api/data/upload        - Télécharger dataset
+  POST   /api/data/preprocess    - Prétraiter
+  POST   /api/data/augment       - Augmenter
+  POST   /api/data/split         - Diviser
+  GET    /api/data/stats         - Statistiques
+
+Training & Evaluation:
+  POST   /api/training/start     - Démarrer entraînement
+  GET    /api/training/history   - Historique
+  POST   /api/training/evaluate  - Évaluer
+  POST   /api/training/predict   - Prédire
+  GET    /api/training/metrics   - Métriques
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧠 ARCHITECTURE DU MODÈLE
+
+Input (64x64x1)
+    ↓
+CNN Layers (Feature Extraction)
+  - Conv2D: 32, 64, 128 filtres
+  - BatchNormalization
+  - MaxPooling
+  - Dropout
+    ↓
+LSTM Layers (Temporal Processing)
+  - LSTM: 128 unités
+  - LSTM: 64 unités
+  - Dropout
+    ↓
+Dense Layers (Classification)
+  - Dense: 128 unités
+  - BatchNormalization
+  - Dropout
+  - Output: 10 classes (Softmax)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛠️ COMMANDES UTILES
+
+npm start                  # Démarrer le serveur
+npm run dev               # Mode développement (rechargement auto)
+npm run ng:serve          # Serveur Angular (port 4200)
+npm run ng:build          # Build Angular
+npm install               # Installer dépendances
+npm run build             # Build complet
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 CONFIGURATION
+
+Port serveur: 3000 (modifiable dans .env)
+Port Angular: 4200
+Node.js: 16+ requis
+npm: 8+ requis
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 TECHNOLOGIES
+
+Backend:
+  - Node.js
+  - Express.js
+  - TensorFlow.js
+  - Multer (file upload)
+
+Frontend:
+  - Angular 17
+  - TypeScript
+  - SCSS
+  - RxJS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🐛 TROUBLESHOOTING
+
+Erreur "Port déjà utilisé":
+  → Modifier PORT dans .env
+
+Erreur "Cannot find module":
+  → Exécuter: npm install
+
+Erreur "Compilation failed":
+  → Exécuter: rm -rf node_modules dist && npm install
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 SUPPORT
+
+1. Vérifier la documentation (README.md, SETUP.md)
+2. Consulter les logs serveur
+3. Vérifier la console navigateur (F12)
+4. Vérifier les dépendances
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ PROCHAINES ÉTAPES
+
+1. Lire README.md pour comprendre le projet
+2. Exécuter npm install
+3. Démarrer avec npm start
+4. Accéder à http://localhost:3000
+5. Explorer les différentes sections
+6. Consulter API_EXAMPLES.md pour tester l'API
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Créé le: 30 Novembre 2025
+Version: 1.0.0
+Status: ✅ Prêt pour développement
+
+Bon développement! 🚀
