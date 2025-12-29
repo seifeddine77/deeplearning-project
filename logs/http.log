@@ -1,0 +1,28 @@
+{"email":"rezgui.seifeddine@hotmail.com","level":"info","message":"User registered in MongoDB","service":"deeplearning-api","timestamp":"2025-12-29 13:14:38:1438","userId":"695270ae9573b1ba6542b2fd","username":"saif775"}
+{"email":"rezgui.seifeddine@hotmail.com","level":"info","message":"User logged in from MongoDB","service":"deeplearning-api","timestamp":"2025-12-29 13:18:03:183","userId":"695270ae9573b1ba6542b2fd"}
+{"hasDataset":false,"hasModel":true,"level":"info","message":"Dashboard overview retrieved","modelId":"model_1766093666356","service":"deeplearning-api","timestamp":"2025-12-29 13:18:04:184","trainingSessions":0}
+{"level":"info","message":"Data statistics retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:18:12:1812"}
+{"features":10,"level":"info","message":"CSV analyzed","service":"deeplearning-api","timestamp":"2025-12-29 13:18:59:1859","totalSamples":3000}
+{"datasetType":"tabular","ext":".csv","level":"info","message":"Upload pipeline selected: loadTabularCsv","service":"deeplearning-api","timestamp":"2025-12-29 13:18:59:1859"}
+{"datasetId":"695271b327a6daa2cad230ab","level":"info","message":"Dataset saved to MongoDB","service":"deeplearning-api","timestamp":"2025-12-29 13:18:59:1859","upsert":true}
+{"features":10,"filename":"tabular_medium.csv","level":"info","message":"Dataset uploaded","service":"deeplearning-api","timestamp":"2025-12-29 13:18:59:1859","totalSamples":3000}
+{"level":"info","message":"Data statistics retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:18:59:1859"}
+{"level":"info","message":"Data statistics retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:06:196"}
+{"inputShape":[10],"level":"info","message":"Model created","modelId":"model_1767010752542","numClasses":2,"service":"deeplearning-api","timestamp":"2025-12-29 13:19:12:1912"}
+{"level":"info","message":"Model summary retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:12:1912"}
+{"level":"info","message":"Model saved","modelName":"DNN1","service":"deeplearning-api","timestamp":"2025-12-29 13:19:18:1918"}
+{"level":"info","message":"Training history retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:21:1921"}
+{"count":1,"level":"info","message":"Model list retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:21:1921"}
+{"batchSize":32,"epochs":10,"level":"info","message":"Training started","modelId":"model_1767010752542","service":"deeplearning-api","timestamp":"2025-12-29 13:19:25:1925"}
+{"batchSize":32,"epochs":10,"level":"info","message":"Training completed","modelId":"model_1767010752542","service":"deeplearning-api","timestamp":"2025-12-29 13:19:34:1934"}
+{"level":"info","message":"Training history retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:35:1935"}
+{"dataset":"test","level":"info","message":"Model evaluated","modelId":"model_1767010752542","service":"deeplearning-api","timestamp":"2025-12-29 13:19:43:1943"}
+{"dataset":"val","level":"info","message":"Model evaluated","modelId":"model_1767010752542","service":"deeplearning-api","timestamp":"2025-12-29 13:19:45:1945"}
+{"count":1,"level":"info","message":"Model list retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:52:1952"}
+{"level":"info","message":"Training history retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:19:52:1952"}
+{"dataset":"test","level":"info","message":"Confusion matrix computed","modelId":"model_1767010752542","samples":600,"service":"deeplearning-api","timestamp":"2025-12-29 13:19:59:1959"}
+{"auc":0.9953819444444445,"dataset":"test","level":"info","message":"ROC curve computed","modelId":"model_1767010752542","samples":600,"service":"deeplearning-api","timestamp":"2025-12-29 13:20:09:209"}
+{"level":"info","message":"Feature importance computed","modelId":"model_1767010752542","service":"deeplearning-api","timestamp":"2025-12-29 13:20:15:2015","topK":10}
+{"dataset":"test","level":"info","message":"Model comparison computed","models":1,"service":"deeplearning-api","timestamp":"2025-12-29 13:20:20:2020"}
+{"count":1,"level":"info","message":"Model list retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:20:40:2040"}
+{"count":1,"level":"info","message":"Datasets retrieved","service":"deeplearning-api","timestamp":"2025-12-29 13:20:43:2043"}
